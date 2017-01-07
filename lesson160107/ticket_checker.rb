@@ -33,6 +33,17 @@ end
 class TicketChecker
   attr_accessor :ticket
 
+  # def initialize station
+  #   @station = station
+  # end
+  #
+  # def in_to_station ticket
+  #   @ticket  
+  # end
+  #
+  # def out_to_station station
+  # end
+
   def required_price
     distance = STATIONS_LIST.index(@ticket.to_station) - STATIONS_LIST.index(@ticket.from_station)
     case distance.abs
@@ -43,7 +54,7 @@ class TicketChecker
     end
   end
 
-  def go_out_enabled?
+  def go_out
     if @ticket.from_station.nil?
       puts "入場時に改札を通っていません。"
       false

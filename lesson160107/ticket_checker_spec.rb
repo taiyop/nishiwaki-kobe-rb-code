@@ -12,7 +12,7 @@ describe TicketChecker do
       ticket_checker = TicketChecker.new
       ticket_checker.ticket = ticket
 
-      expect(ticket_checker.go_out_enabled?).to eq true
+      expect(ticket_checker.go_out).to eq true
     end
   end
 
@@ -26,7 +26,7 @@ describe TicketChecker do
       ticket_checker = TicketChecker.new
       ticket_checker.ticket = ticket
 
-      expect(ticket_checker.go_out_enabled?).to eq false
+      expect(ticket_checker.go_out).to eq false
 
     end
   end
@@ -41,7 +41,7 @@ describe TicketChecker do
       ticket_checker = TicketChecker.new
       ticket_checker.ticket = ticket
 
-      expect(ticket_checker.go_out_enabled?).to eq true
+      expect(ticket_checker.go_out).to eq true
 
     end
   end
@@ -56,7 +56,7 @@ describe TicketChecker do
       ticket_checker = TicketChecker.new
       ticket_checker.ticket = ticket
 
-      expect(ticket_checker.go_out_enabled?).to eq true
+      expect(ticket_checker.go_out).to eq true
 
     end
   end
@@ -71,7 +71,7 @@ describe TicketChecker do
       ticket_checker = TicketChecker.new
       ticket_checker.ticket = ticket
 
-      expect(ticket_checker.go_out_enabled?).to eq false
+      expect(ticket_checker.go_out).to eq false
 
     end
   end
@@ -86,7 +86,7 @@ describe TicketChecker do
       ticket_checker = TicketChecker.new
       ticket_checker.ticket = ticket
 
-      expect(ticket_checker.go_out_enabled?).to eq true
+      expect(ticket_checker.go_out).to eq true
     end
   end
 
@@ -100,7 +100,7 @@ describe TicketChecker do
       ticket_checker = TicketChecker.new
       ticket_checker.ticket = ticket
 
-      expect(ticket_checker.go_out_enabled?).to eq false
+      expect(ticket_checker.go_out).to eq false
     end
   end
 
@@ -114,7 +114,7 @@ describe TicketChecker do
       ticket_checker = TicketChecker.new
       ticket_checker.ticket = ticket
 
-      expect(ticket_checker.go_out_enabled?).to eq true
+      expect(ticket_checker.go_out).to eq true
     end
   end
 
@@ -128,7 +128,7 @@ describe TicketChecker do
       ticket_checker = TicketChecker.new
       ticket_checker.ticket = ticket
 
-      expect(ticket_checker.go_out_enabled?).to eq true
+      expect(ticket_checker.go_out).to eq true
     end
   end
 
@@ -142,7 +142,7 @@ describe TicketChecker do
       ticket_checker = TicketChecker.new
       ticket_checker.ticket = ticket
 
-      expect(ticket_checker.go_out_enabled?).to eq false
+      expect(ticket_checker.go_out).to eq false
     end
   end
 
@@ -156,7 +156,7 @@ describe TicketChecker do
       ticket_checker = TicketChecker.new
       ticket_checker.ticket = ticket
 
-      expect(ticket_checker.go_out_enabled?).to eq false
+      expect(ticket_checker.go_out).to eq false
     end
   end
 
@@ -190,7 +190,7 @@ describe TicketChecker do
       ticket_checker = TicketChecker.new
       ticket_checker.ticket = ticket
 
-      expect(ticket_checker.go_out_enabled?).to eq false
+      expect(ticket_checker.go_out).to eq false
     end
   end
 end
