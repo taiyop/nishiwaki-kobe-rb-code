@@ -94,16 +94,38 @@ describe TicketChecker do
     end
   end
 
-  # describe "#9 180円の切符を購入し十三で入場、岡町で出場した結果" do
-  #   it "出場できる" do
-  #     ticket_checker = TicketChecker.new
-  #     ticket_checker.from_station = "十三"
-  #     ticket_checker.to_station = "岡町"
-  #     ticket_checker.purchased_ticket_price = 180
-  #
-  #     expect(ticket_checker.go_out_enabled?).to eq true
-  #   end
-  # end
+  describe "#9-#8 180円の切符を購入し岡町で入場、十三で出場した結果" do
+    it "出場できる" do
+      ticket_checker = TicketChecker.new
+      ticket_checker.from_station = "岡町"
+      ticket_checker.to_station = "十三"
+      ticket_checker.purchased_ticket_price = 180
+
+      expect(ticket_checker.go_out_enabled?).to eq true
+    end
+  end
+
+  describe "#9-#7 150円の切符を購入し岡町で入場、十三で出場した結果" do
+    it "出場できない" do
+      ticket_checker = TicketChecker.new
+      ticket_checker.from_station = "岡町"
+      ticket_checker.to_station = "十三"
+      ticket_checker.purchased_ticket_price = 150
+
+      expect(ticket_checker.go_out_enabled?).to eq false
+    end
+  end
+
+  describe "#10 150円の切符を購入し岡町で入場、十三で出場した結果" do
+    it "出場できない" do
+      ticket_checker = TicketChecker.new
+      ticket_checker.from_station = "岡町"
+      ticket_checker.to_station = "十三"
+      ticket_checker.purchased_ticket_price = 150
+
+      expect(ticket_checker.go_out_enabled?).to eq false
+    end
+  end
 
 end
 

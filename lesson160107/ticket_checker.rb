@@ -5,15 +5,22 @@ class TicketChecker
 
   def required_price
     distance = STATIONS_LIST.index(@to_station) - STATIONS_LIST.index(@from_station)
-    case distance
+    case distance.abs
     when 1 then 150
     when 2 then 180
     when 3 then 220
+    when 0 then nil
     end
   end
 
   def go_out_enabled?
-    (@purchased_ticket_price - self.required_price) >= 0 ? true : false
+    diff_price = @purchased_ticket_price - self.required_price
+    if self.required_price.nil?
+      puts "乗車駅と同じ駅です。"
+      false
+    else
+      diff_price >= 0 ? true : false
+    end
   end
 end
 
