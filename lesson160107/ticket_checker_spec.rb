@@ -4,10 +4,13 @@ require './ticket_checker'
 describe TicketChecker do
   describe "#1 150円の切符を購入し梅田で入場、十三で出場した結果" do
     it "出場できる" do
+      ticket = Ticket.new
+      ticket.set_from_station "梅田"
+      ticket.set_to_station "十三"
+      ticket.price = 150
+
       ticket_checker = TicketChecker.new
-      ticket_checker.from_station = "梅田"
-      ticket_checker.to_station = "十三"
-      ticket_checker.purchased_ticket_price = 150
+      ticket_checker.ticket = ticket
 
       expect(ticket_checker.go_out_enabled?).to eq true
     end
@@ -15,10 +18,13 @@ describe TicketChecker do
 
   describe "#2 150円の切符を購入し梅田で入場、庄内で出場した結果" do
     it "出場できない" do
+      ticket = Ticket.new
+      ticket.set_from_station "梅田"
+      ticket.set_to_station "庄内"
+      ticket.price = 150
+
       ticket_checker = TicketChecker.new
-      ticket_checker.from_station = "梅田"
-      ticket_checker.to_station = "庄内"
-      ticket_checker.purchased_ticket_price = 150
+      ticket_checker.ticket = ticket
 
       expect(ticket_checker.go_out_enabled?).to eq false
 
@@ -27,10 +33,13 @@ describe TicketChecker do
 
   describe "#3 180円の切符を購入し梅田で入場、庄内で出場した結果" do
     it "出場できる" do
+      ticket = Ticket.new
+      ticket.set_from_station "梅田"
+      ticket.set_to_station "庄内"
+      ticket.price = 180
+
       ticket_checker = TicketChecker.new
-      ticket_checker.from_station = "梅田"
-      ticket_checker.to_station = "庄内"
-      ticket_checker.purchased_ticket_price = 180
+      ticket_checker.ticket = ticket
 
       expect(ticket_checker.go_out_enabled?).to eq true
 
@@ -39,10 +48,13 @@ describe TicketChecker do
 
   describe "#4 220円の切符を購入し梅田で入場、庄内で出場した結果" do
     it "出場できる" do
+      ticket = Ticket.new
+      ticket.set_from_station "梅田"
+      ticket.set_to_station "庄内"
+      ticket.price = 220
+
       ticket_checker = TicketChecker.new
-      ticket_checker.from_station = "梅田"
-      ticket_checker.to_station = "庄内"
-      ticket_checker.purchased_ticket_price = 220
+      ticket_checker.ticket = ticket
 
       expect(ticket_checker.go_out_enabled?).to eq true
 
@@ -51,10 +63,13 @@ describe TicketChecker do
 
   describe "#5 180円の切符を購入し梅田で入場、岡町で出場した結果" do
     it "出場できない" do
+      ticket = Ticket.new
+      ticket.set_from_station "梅田"
+      ticket.set_to_station "岡町"
+      ticket.price = 180
+
       ticket_checker = TicketChecker.new
-      ticket_checker.from_station = "梅田"
-      ticket_checker.to_station = "岡町"
-      ticket_checker.purchased_ticket_price = 180
+      ticket_checker.ticket = ticket
 
       expect(ticket_checker.go_out_enabled?).to eq false
 
@@ -63,10 +78,13 @@ describe TicketChecker do
 
   describe "#6 220円の切符を購入し梅田で入場、岡町で出場した結果" do
     it "出場できる" do
+      ticket = Ticket.new
+      ticket.set_from_station "梅田"
+      ticket.set_to_station "岡町"
+      ticket.price = 220
+
       ticket_checker = TicketChecker.new
-      ticket_checker.from_station = "梅田"
-      ticket_checker.to_station = "岡町"
-      ticket_checker.purchased_ticket_price = 220
+      ticket_checker.ticket = ticket
 
       expect(ticket_checker.go_out_enabled?).to eq true
     end
@@ -74,10 +92,13 @@ describe TicketChecker do
 
   describe "#7 150円の切符を購入し十三で入場、岡町で出場した結果" do
     it "出場できない" do
+      ticket = Ticket.new
+      ticket.set_from_station "十三"
+      ticket.set_to_station "岡町"
+      ticket.price = 150
+
       ticket_checker = TicketChecker.new
-      ticket_checker.from_station = "十三"
-      ticket_checker.to_station = "岡町"
-      ticket_checker.purchased_ticket_price = 150
+      ticket_checker.ticket = ticket
 
       expect(ticket_checker.go_out_enabled?).to eq false
     end
@@ -85,10 +106,13 @@ describe TicketChecker do
 
   describe "#8 180円の切符を購入し十三で入場、岡町で出場した結果" do
     it "出場できる" do
+      ticket = Ticket.new
+      ticket.set_from_station "十三"
+      ticket.set_to_station "岡町"
+      ticket.price = 180
+
       ticket_checker = TicketChecker.new
-      ticket_checker.from_station = "十三"
-      ticket_checker.to_station = "岡町"
-      ticket_checker.purchased_ticket_price = 180
+      ticket_checker.ticket = ticket
 
       expect(ticket_checker.go_out_enabled?).to eq true
     end
@@ -96,10 +120,13 @@ describe TicketChecker do
 
   describe "#9-#8 180円の切符を購入し岡町で入場、十三で出場した結果" do
     it "出場できる" do
+      ticket = Ticket.new
+      ticket.set_from_station "岡町"
+      ticket.set_to_station "十三"
+      ticket.price = 180
+
       ticket_checker = TicketChecker.new
-      ticket_checker.from_station = "岡町"
-      ticket_checker.to_station = "十三"
-      ticket_checker.purchased_ticket_price = 180
+      ticket_checker.ticket = ticket
 
       expect(ticket_checker.go_out_enabled?).to eq true
     end
@@ -107,10 +134,13 @@ describe TicketChecker do
 
   describe "#9-#7 150円の切符を購入し岡町で入場、十三で出場した結果" do
     it "出場できない" do
+      ticket = Ticket.new
+      ticket.set_from_station "岡町"
+      ticket.set_to_station "十三"
+      ticket.price = 150
+
       ticket_checker = TicketChecker.new
-      ticket_checker.from_station = "岡町"
-      ticket_checker.to_station = "十三"
-      ticket_checker.purchased_ticket_price = 150
+      ticket_checker.ticket = ticket
 
       expect(ticket_checker.go_out_enabled?).to eq false
     end
@@ -118,12 +148,36 @@ describe TicketChecker do
 
   describe "#10 150円の切符を購入し岡町で入場、十三で出場した結果" do
     it "出場できない" do
+      ticket = Ticket.new
+      ticket.set_from_station "岡町"
+      ticket.set_to_station "十三"
+      ticket.price = 150
+
       ticket_checker = TicketChecker.new
-      ticket_checker.from_station = "岡町"
-      ticket_checker.to_station = "十三"
-      ticket_checker.purchased_ticket_price = 150
+      ticket_checker.ticket = ticket
 
       expect(ticket_checker.go_out_enabled?).to eq false
+    end
+  end
+
+  describe "#11 150円の切符を購入し梅田で入場、さらに梅田で再入場した結果" do
+    it "入場できない" do
+      ticket = Ticket.new
+      ticket.set_from_station "梅田"
+      ticket.price = 150
+
+      expect(ticket.set_from_station "梅田").to eq false
+    end
+  end
+
+  describe "#12 150円の切符を購入し梅田で入場、十三で出場し、再度十三で出場した結果" do
+    it "出場できない" do
+      ticket = Ticket.new
+      ticket.set_from_station "梅田"
+      ticket.set_to_station "十三"
+      ticket.price = 150
+
+      expect(ticket.set_to_station "十三").to eq false
     end
   end
 
