@@ -44,12 +44,17 @@ class TicketChecker
   end
 
   def go_out_enabled?
-    diff_price = @ticket.price - self.required_price
-    if self.required_price.nil?
-      puts "乗車駅と同じ駅です。"
+    if @ticket.from_station.nil?
+      puts "入場時に改札を通っていません。"
       false
     else
-      diff_price >= 0 ? true : false
+      diff_price = @ticket.price - self.required_price
+      if self.required_price.nil?
+        puts "乗車駅と同じ駅です。"
+        false
+      else
+        diff_price >= 0 ? true : false
+      end
     end
   end
 end

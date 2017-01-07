@@ -181,5 +181,17 @@ describe TicketChecker do
     end
   end
 
+  describe "#13 150円の切符を購入し改札を通さず入場して、梅田で出場した結果" do
+    it "出場できない" do
+      ticket = Ticket.new
+      ticket.set_to_station "梅田"
+      ticket_price = 150
+
+      ticket_checker = TicketChecker.new
+      ticket_checker.ticket = ticket
+
+      expect(ticket_checker.go_out_enabled?).to eq false
+    end
+  end
 end
 
