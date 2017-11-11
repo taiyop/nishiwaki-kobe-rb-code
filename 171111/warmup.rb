@@ -1,6 +1,6 @@
 class Matrix
-  def initialize(string)
-    @_matrix = string2matrix(string)
+  def initialize(matrix_string)
+    @matrix_array = matrixize(matrix_string)
   end
 
   #
@@ -9,30 +9,37 @@ class Matrix
   def transpose
     transposed_matrix = []
 
-    @_matrix[0].size.times.each do |_|
+    # 新しい空の行列を作成
+    @matrix_array[0].size.times.each do |_|
       transposed_matrix << []
     end
 
-    @_matrix.each.with_index(0) do |array, line|
+    # 空の行列にデータを挿入
+    @matrix_array.each.with_index(0) do |array, _line|
       array.each.with_index(0) do |elm, row|
         transposed_matrix[row] << elm
       end
     end
 
-    @_matrix = transposed_matrix
+    @matrix_array = transposed_matrix
   end
 
   def output
-    @_matrix.each do |line_array|
+    @matrix_array.each do |line_array|
       puts line_array.join(' ')
     end
   end
 
   private
+
+  #
+  # 行列構造のArrayへ変換
   #
   # @param [String]
   #
-  def string2matrix(string)
+  # @return [Array] e.g. [[1,2,3], [2,3,4], [4,5,6]]
+  #
+  def matrixize(string)
     matrix = []
     string.each_line do |line|
       array = line.split(' ')
@@ -59,3 +66,20 @@ puts "---after-----"
 new_matrix = Matrix.new(input)
 new_matrix.transpose
 new_matrix.output
+
+puts "==============="
+
+next_input = <<~EOS
+  1 2
+  4 5
+  7 8
+EOS
+puts "---before-----"
+puts next_input
+
+puts "---after-----"
+
+next_matrix = Matrix.new(next_input)
+next_matrix.transpose
+next_matrix.output
+
